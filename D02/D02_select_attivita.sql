@@ -130,5 +130,21 @@ order by BUDGET
   offset 1 row
    fetch next row only;
 
+select A.*
+    from D02_ATTIVITA A
+      -- io sono un commento a riga singola
+order by PROGETTO;
+
+select A.*
+    from D02_ATTIVITA A -- io sono un commento a riga singola
+order by PROGETTO ASC;
+
+select A.*
+      /*
+         Io sono un commnento
+         Multiriga
+      */
+    from D02_ATTIVITA A
+order by PROGETTO DESC;
 
 
