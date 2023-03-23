@@ -13,7 +13,7 @@ select A.PROGETTO,
        A.ATTIVITA,
        A.DATA_INIZIO,
        A.DATA_FINE,
-       A.DATA_FINE – A.DATA_INIZIO as GIORNI
+       A.DATA_FINE - A.DATA_INIZIO as GIORNI
   from D02_ATTIVITA A;
   
 select A.*
