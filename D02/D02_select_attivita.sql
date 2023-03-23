@@ -22,15 +22,15 @@ select ID,
 
 select A.*
   from D02_ATTIVITA A
- where ATTIVITA like ‘Co%';
+ where ATTIVITA like 'Co%';
 
 select A.*
   from D02_ATTIVITA A
- where ATTIVITA like ‘%to';
+ where ATTIVITA like '%to';
 
 select A.*
   from D02_ATTIVITA A
- where ATTIVITA like ‘%comp%';
+ where ATTIVITA like '%comp%';
  
  select A.*
   from D02_ATTIVITA A
@@ -78,3 +78,32 @@ select a.data_inizio,
        a.data_inizio + 1 giorno_successivo,
        a.data_fine - a.data_inizio giorni_attivita
   from d02_attivita a;
+
+select A.*
+    from D02_ATTIVITA A
+   where BUDGET = 500
+order by PROGETTO;
+
+select A.*
+    from D02_ATTIVITA A
+   where BUDGET = 500
+order by PROGETTO ASC;
+
+select A.*
+    from D02_ATTIVITA A
+   where BUDGET = 500
+order by PROGETTO DESC;
+
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET DESC NULLS LAST;
+
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET ASC NULLS FIRST;
+
+select A.*
+    from D02_ATTIVITA A
+   where BUDGET = 500
+order by PROGETTO, ATTIVITA DESC;
+
