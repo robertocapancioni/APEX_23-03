@@ -81,17 +81,14 @@ select a.data_inizio,
 
 select A.*
     from D02_ATTIVITA A
-   where BUDGET = 500
 order by PROGETTO;
 
 select A.*
     from D02_ATTIVITA A
-   where BUDGET = 500
 order by PROGETTO ASC;
 
 select A.*
     from D02_ATTIVITA A
-   where BUDGET = 500
 order by PROGETTO DESC;
 
 select A.*
@@ -104,6 +101,5 @@ order by BUDGET ASC NULLS FIRST;
 
 select A.*
     from D02_ATTIVITA A
-   where BUDGET = 500
 order by PROGETTO, ATTIVITA DESC;
 
