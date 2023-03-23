@@ -9,14 +9,14 @@ select ID,
        BUDGET
   from D02_ATTIVITA;
   
-  select A.PROGETTO,
+select A.PROGETTO,
        A.ATTIVITA,
        A.DATA_INIZIO,
        A.DATA_FINE,
        A.DATA_FINE – A.DATA_INIZIO as GIORNI
   from D02_ATTIVITA A;
   
-  select A.*
+select A.*
   from D02_ATTIVITA A
  where PROGETTO = 'Sito Web pubblico';
 
@@ -32,7 +32,7 @@ select A.*
   from D02_ATTIVITA A
  where ATTIVITA like '%comp%';
  
- select A.*
+select A.*
   from D02_ATTIVITA A
  where BUDGET is null;
 
@@ -62,15 +62,15 @@ select A.*
  where NVL(BUDGET,0)<> 500
    and BUDGET is null;
    
- select a.*
+select a.*
   from d02_attivita a
  where data_inizio > date'2023-01-03';
 
- select a.*
+select a.*
   from d02_attivita a
  where data_inizio > to_date('01/03/2023','DD/MM/YYYY');
 
- select a.*
+select a.*
   from d02_attivita a
  where data_inizio > to_date('01/03/2023 13:00:00','DD/MM/YYYY hh24:MI:SS');
 
@@ -79,46 +79,46 @@ select a.data_inizio,
        a.data_fine - a.data_inizio giorni_attivita
   from d02_attivita a;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by PROGETTO;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by PROGETTO ASC;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by PROGETTO DESC;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET DESC NULLS LAST;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET ASC NULLS FIRST;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by PROGETTO, ATTIVITA DESC;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET
    fetch first 5 rows only;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET
    fetch next 5 rows only;
    
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET ASC NULLS FIRST
    fetch first row only;
    
-select A.*
+  select A.*
     from D02_ATTIVITA A
 order by BUDGET
   offset 2 rows
@@ -130,16 +130,16 @@ order by BUDGET
   offset 1 row
    fetch next row only;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A
       -- io sono un commento a riga singola
 order by PROGETTO;
 
-select A.*
+  select A.*
     from D02_ATTIVITA A -- io sono un commento a riga singola
 order by PROGETTO ASC;
 
-select A.*
+  select A.*
       /*
          Io sono un commnento
          Multiriga
@@ -147,4 +147,23 @@ select A.*
     from D02_ATTIVITA A
 order by PROGETTO DESC;
 
+select 
+       a.id as attivita_id,
+       a.progetto,
+       a.attivita,
+       a.data_inizio,
+       a.data_fine,
+       /* 
+          altri dati 
+          da mostrare
+       */
+       a.stato,
+       a.assegnato_a,
+       a.costo,
+       a.budget
+  from d02_attivita a
+ where progetto ='Bug Tracker'
+ order by BUDGET DESC NULLS LAST
+offset 2 rows -- salta 2 righe
+ fetch next 5 rows only;
 
