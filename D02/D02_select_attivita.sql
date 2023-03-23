@@ -103,3 +103,32 @@ select A.*
     from D02_ATTIVITA A
 order by PROGETTO, ATTIVITA DESC;
 
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET
+   fetch first 5 rows only;
+
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET
+   fetch next 5 rows only;
+   
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET ASC NULLS FIRST
+   fetch first row only;
+   
+select A.*
+    from D02_ATTIVITA A
+order by BUDGET
+  offset 2 rows
+   fetch next 5 rows only;
+   
+  select A.*
+    from D02_ATTIVITA A
+order by BUDGET
+  offset 1 row
+   fetch next row only;
+
+
+
