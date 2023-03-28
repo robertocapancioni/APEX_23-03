@@ -69,16 +69,15 @@ select nazione,
     having sum(revenue_2020) >180000000
   order by tot_revenue_2020 desc;
 
-    select nazione,
-           count(*) as numero,
-           count(distinct NOME) num_aziende,
-           sum(revenue_2020) as tot_revenue_2020,
-           max(revenue_2020) as max_revenue_2020,
+   select nazione,
+           count(*)                   as numero,
+           count(distinct NOME)       as num_aziende,
+           sum(revenue_2020)          as tot_revenue_2020,
+           max(revenue_2020)          as max_revenue_2020,
            round(avg(revenue_2020),2) as media_revenue_2020
       from d03_classifica_ft
      where settore = 'Technology'
   group by nazione
     having sum(revenue_2020) >180000000
-     order by tot_revenue_2020 desc
+  order by tot_revenue_2020 desc
      fetch next 3 rows only;
-  order by tot_revenue_2020 desc;
