@@ -9,7 +9,7 @@ select ID,
            when IMPORTO between 300 and 400 then 'warning'
            else                                'danger' 
        end    as alert_type
-  from D03_VENDITA;
+  from D03_VENDITA2;
 
   -- Media List
 select ID,
@@ -27,7 +27,7 @@ select ID,
          when IMPORTO < 400 then 'u-color-7'
          else 'u-color-8'
        end as ICON_COLOR_CLASS
-  from D03_VENDITA
+  from D03_VENDITA2
 
     -- Cards
   select ID,
@@ -45,7 +45,7 @@ select ID,
          when IMPORTO < 400 then 'u-color-7'
          else 'u-color-8'
        end as CARD_COLOR
-  from D03_VENDITA
+  from D03_VENDITA2
 
   -- Comments
 select ID,
@@ -63,7 +63,7 @@ select ID,
        null as ATTRIBUTE_2,
        null as ATTRIBUTE_3,
        null as ATTRIBUTE_4
-  from D03_VENDITA
+  from D03_VENDITA2
   
   -- Badge List
 select 
@@ -74,4 +74,4 @@ select
  ZONA_CLIENTE,
  QUANTITA,
  IMPORTO
- from D03_VENDITA
+ from D03_VENDITA2
