@@ -1,1 +1,1 @@
-{"coordinates":[43.7742627,11.2756498], "type":"point"}
+{"coordinates":[11.2756498,43.7742627], "type":"point"}
