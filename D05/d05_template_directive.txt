@@ -1,0 +1,45 @@
+{if [!]NAME/}
+     testo1
+{elseif [!]NAME2/}
+     testo2
+{else/}
+     altro testo
+{endif/}
+
+{if DESCRIPTION/}
+      &DESCRIPTION.
+{else/}
+      Nessuna Descrizione
+{endif/}
+
+
+{case NAME/}
+{when valore1/}
+  testo1
+{when valore2/}
+  testo2
+{otherwise/}
+  altro testo
+{endcase/} 
+
+
+{case JOB/}
+{when SALESMAN/}
+     &SAL. (&COMM.)
+{when PRESIDENT/}
+     --
+{otherwise/}
+     &SAL.
+{endcase/}
+
+{loop ["SEP"] NAME/}
+   testo
+{endloop/}
+
+
+<ul>
+  {loop "," TAGS/}
+    <li>&APEX$I. - &APEX$ITEM.</li>
+  {endloop/}
+</ul>
+
