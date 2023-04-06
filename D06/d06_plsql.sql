@@ -134,3 +134,65 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE( l_venduto );
 END;
 /
+
+CREATE OR REPLACE PACKAGE D06_PKG
+IS
+PROCEDURE VENDUTO (
+                   p_venduto IN number default 0
+                  );
+
+FUNCTION GET_VENDUTO (
+                      p_venduto IN number default 0
+                     )
+RETURN VARCHAR2;
+
+END D06_PKG;
+/
+
+CREATE OR REPLACE PACKAGE BODY D06_PKG
+IS
+    PROCEDURE VENDUTO (
+                                            p_venduto IN number default 0
+                                            )
+    IS
+    BEGIN
+        IF p_venduto > 100000 THEN 
+            DBMS_OUTPUT.PUT_LINE( 'Venduto > 100k ' ); 
+        ELSIF p_venduto > 50000 THEN 
+            DBMS_OUTPUT.PUT_LINE( 'Venduto > 50k ' ); 
+        ELSE
+            DBMS_OUTPUT.PUT_LINE( 'Venduto <= 50k ' ); 
+        END IF; 
+    END VENDUTO;
+
+    FUNCTION GET_VENDUTO (
+                                            p_venduto IN number default 0
+                                            )
+                                            RETURN VARCHAR2
+    IS
+    l_return VARCHAR2(100);
+    BEGIN
+        IF p_venduto > 100000 THEN 
+            l_return := 'Venduto > 100k '; 
+        ELSIF p_venduto > 50000 THEN 
+            l_return := 'Venduto > 50k '; 
+        ELSE
+            l_return := 'Venduto <= 50k '; 
+        END IF; 
+        RETURN l_return;
+    END GET_VENDUTO;
+END D06_PKG;
+/
+
+BEGIN
+  D06_PKG.VENDUTO(p_venduto => 100000);
+END;
+/
+
+DECLARE
+l_venduto VARCHAR2(100) := null;
+BEGIN
+  l_venduto := D06_PKG.GET_VENDUTO(p_venduto => 100000); 
+  DBMS_OUTPUT.PUT_LINE( l_venduto );
+END;
+/
