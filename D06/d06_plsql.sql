@@ -88,3 +88,46 @@ BEGIN
   end loop;
 END;
 /
+
+CREATE OR REPLACE PROCEDURE D06_VENDUTO (
+                                         p_venduto IN number default 0
+                                        )
+IS
+BEGIN
+   IF p_venduto > 100000 THEN 
+      DBMS_OUTPUT.PUT_LINE( 'Venduto > 100k ' ); 
+   ELSIF p_venduto > 50000 THEN 
+      DBMS_OUTPUT.PUT_LINE( 'Venduto > 50k ' ); 
+   ELSE
+      DBMS_OUTPUT.PUT_LINE( 'Venduto <= 50k ' ); 
+   END IF; 
+END;
+/
+
+BEGIN
+  D06_VENDUTO(p_venduto => 100000);
+END;
+/
+
+CREATE OR REPLACE FUNCTION D06_GET_VENDUTO (
+                                         p_venduto IN number default 0
+                                        )
+                                        RETURN VARCHAR2
+IS
+l_return VARCHAR2(109);
+BEGIN
+   IF p_venduto > 100000 THEN 
+      l_return := 'Venduto > 100k '; 
+   ELSIF p_venduto > 50000 THEN 
+      l_return := 'Venduto > 50k '; 
+   ELSE
+      l_return := 'Venduto <= 50k '; 
+   END IF; 
+   RETURN l_return;
+END;
+/
+
+BEGIN
+  DBMS_OUTPUT.PUT_LINE( D06_GET_VENDUTO(p_venduto => 100000) );
+END;
+/
