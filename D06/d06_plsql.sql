@@ -114,7 +114,7 @@ CREATE OR REPLACE FUNCTION D06_GET_VENDUTO (
                                         )
                                         RETURN VARCHAR2
 IS
-l_return VARCHAR2(109);
+l_return VARCHAR2(100);
 BEGIN
    IF p_venduto > 100000 THEN 
       l_return := 'Venduto > 100k '; 
@@ -127,7 +127,10 @@ BEGIN
 END;
 /
 
+DECLARE
+l_venduto VARCHAR2(100) := null;
 BEGIN
-  DBMS_OUTPUT.PUT_LINE( D06_GET_VENDUTO(p_venduto => 100000) );
+  l_venduto := D06_GET_VENDUTO(p_venduto => 100000); 
+  DBMS_OUTPUT.PUT_LINE( l_venduto );
 END;
 /
