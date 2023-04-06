@@ -58,3 +58,33 @@ BEGIN
 END;
 /
 
+DECLARE
+  l_venduto      NUMBER;
+  l_commissione NUMBER;
+BEGIN
+  l_venduto := 150000;
+  CASE
+  WHEN l_venduto    > 200000 THEN
+    l_commissione := 0.2;
+  WHEN l_venduto   >= 100000 AND l_venduto < 200000 THEN
+    l_commissione := 0.15;
+  WHEN l_venduto   >= 50000 AND l_venduto < 100000 THEN
+    l_commissione := 0.1;
+  WHEN l_venduto    > 30000 THEN
+    l_commissione := 0.05;
+  ELSE
+    l_commissione := 0;
+  END CASE;
+
+  DBMS_OUTPUT.PUT_LINE( 'Commissioni:  ' || l_commissione * 100 || '%'
+  );
+END;
+/
+
+BEGIN
+  for c in (select level numero from dual connect by level <=10)
+  loop
+     DBMS_OUTPUT.PUT_LINE( 'Numero-->  ' || c.numero  );
+  end loop;
+END;
+/
