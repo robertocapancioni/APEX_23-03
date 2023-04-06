@@ -1,0 +1,37 @@
+select t_naz, c_naz 
+  from d06_nazioni
+ order by t_naz
+
+select t_reg, c_reg
+from d06_regioni
+where c_naz = :P3_NAZIONE
+order by t_reg
+
+select t_prov, c_prov
+from d06_province
+where c_naz = :P3_NAZIONE
+and  c_reg = :P3_REGIONE
+order by t_prov
+
+select t_com, c_com
+from D06_comuni
+where c_naz = :P3_NAZIONE
+and (:P3_REGIONE is null or c_reg = :P3_REGIONE)
+and (:P3_PROVINCIA is null or c_prov = :P3_PROVINCIA) 
+order by t_com
+
+select t_set, c_set from d06_settori
+order by t_set
+
+{"coordinates":[11.277748,43.7741903],"type":"point"}
+
+
+begin
+  if :P3_CAP is null and :P3_COMUNE is not null then
+     select c_cap 
+       into :P3_CAP
+       from D06_COMUNI
+      where c_com = :P3_COMUNE;
+  end if;
+
+end;
