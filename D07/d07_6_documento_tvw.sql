@@ -43,7 +43,7 @@ instead of delete on d07_documento_tvw
 for each row 
 begin 
         d07_documento_api.delete_row (
-        p_id                           => :new.id
+        p_id                           => :old.id
     );
 end; 
 /
