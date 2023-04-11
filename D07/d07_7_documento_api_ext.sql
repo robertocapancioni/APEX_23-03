@@ -2,12 +2,12 @@ CREATE OR REPLACE PACKAGE d07_documento_api_ext IS
 /*
 BEGIN
     d07_DOCUMENTO_API_EXT.SET_ROW(P_ROW_STATUS => :APEX$ROW_STATUS, 
-                                  P_ID => :PX_ID, 
-                                  P_TIPO_DOCUMENTO_ID => :PX_TIPO_DOCUMENTO_ID, 
-                                  P_CODICE => :PX_CODICE, 
-                                  P_DATA_DOCUMENTO => :PX_DATA_DOCUMENTO,
-                                  P_FIRMA_YN => :PX_FIRMA_YN, 
-                                  P_CATEGORIA => :PX_CATEGORIA);
+                                  P_ID => :ID, 
+                                  P_TIPO_DOCUMENTO_ID => :TIPO_DOCUMENTO_ID, 
+                                  P_CODICE => :CODICE, 
+                                  P_DATA_DOCUMENTO => :DATA_DOCUMENTO,
+                                  P_FIRMA_YN => :FIRMA_YN, 
+                                  P_CATEGORIA => :CATEGORIA);
 END;
 */
     PROCEDURE set_row (
