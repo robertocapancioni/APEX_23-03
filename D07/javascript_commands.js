@@ -9,9 +9,9 @@ $x("P5_CATEGORIA").value='Vikas';
 $("#P5_CATEGORIA" ).val('Vikas'); // ??
 $s('P5_CATEGORIA','Vikas');   // ??
 
-$("#P5_CATEGORIA_LABEL").text(); //to get lable text
+$("#P5_CATEGORIA_LABEL").text(); //to get label text
 
-$("#P5_CATEGORIA_LABEL").text('Vikas Pandey'); //to Set lable text
+$("#P5_CATEGORIA_LABEL").text('Vikas Pandey'); //to Set label text
 
 
 apex.item( "P4_ID" ).setValue('1');
