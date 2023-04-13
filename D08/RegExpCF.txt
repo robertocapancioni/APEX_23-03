@@ -1,1 +1,11 @@
 ^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$
+
+begin
+if REGEXP_LIKE(:P5_CODFIS, '^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$') then
+  :P5_ALERT_CF := '';
+else
+  :P5_ALERT_CF :='Codice Fiscale non corretto';
+end if;
+
+
+end;
