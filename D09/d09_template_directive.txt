@@ -1,0 +1,82 @@
+{if [!]NAME/}
+     testo1
+{elseif [!]NAME2/}
+     testo2
+{else/}
+     altro testo
+{endif/}
+
+{if DESCRIPTION/}
+      &DESCRIPTION.
+{else/}
+      Nessuna Descrizione
+{endif/}
+
+
+{case NAME/}
+{when valore1/}
+  testo1
+{when valore2/}
+  testo2
+{otherwise/}
+  altro testo
+{endcase/} 
+
+
+{case JOB/}
+{when SALESMAN/}
+     &SAL. (&COMM.)
+{when PRESIDENT/}
+     --
+{otherwise/}
+     &SAL.
+{endcase/}
+
+{loop ["SEP"] NAME/}
+   testo
+{endloop/}
+
+
+<ul>
+  {loop "," TAGS/}
+    <li>&APEX$I. - &APEX$ITEM.</li>
+  {endloop/}
+</ul>
+
+
+<ul>
+  {loop ":" SPORT/}
+    <li style="white-space: nowrap;">&APEX$ITEM.</li>
+  {endloop/}
+</ul>
+
+{loop ":" LINGUE/}
+<span class="new-tag">&APEX$ITEM.</span>
+{endloop/}
+
+.new-tag {
+    display: inline-block;
+    padding: 4px;
+    margin: 5px;
+    background-color: #23648f;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    font-stretch: condensed;
+}
+
+
+
+{if NAME/}
+      &NAME.
+{else/}
+      Nessuna Descrizione
+{endif/}
+
+{case NAME/}
+{when -/}
+    Nessun Valore
+{otherwise/}
+     &NAME.
+{endcase/}
