@@ -29,7 +29,8 @@ end;
 
 ----------------------------------------------------------------------
 
-Processo Tipo PRODOTTO_IDdeclare
+Processo Tipo PRODOTTO_ID
+declare
 cnt   number;
 begin
   
