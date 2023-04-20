@@ -9,7 +9,7 @@ ALTER TABLE  "D08_ACQUISTO" ADD CONSTRAINT "D08_ACQUISTO_PRODOTTO_ID_FK" FOREIGN
 
 ----------------------------------------------------------------------
 
-Processo Vendita con esegui codice
+--Processo Vendita con esegui codice
 begin
 apex_debug.message(:APEX$ROW_STATUS);
 if :APEX$ROW_STATUS = 'U' then
@@ -29,7 +29,7 @@ end;
 
 ----------------------------------------------------------------------
 
-Processo Tipo PRODOTTO_ID
+--Processo Tipo PRODOTTO_ID
 declare
 cnt   number;
 begin
