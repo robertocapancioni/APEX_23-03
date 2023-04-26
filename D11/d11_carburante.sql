@@ -18,7 +18,7 @@ select targa,
          data,
          litri,
          km_progr,
-         lag(km_progr) over(partition by targa 
+         lag(km_progr)  over(partition by targa 
                                  order by data  ) km_progr_precedenti,
          lead(km_progr) over(partition by targa 
                                  order by data  ) km_progr_successivi
