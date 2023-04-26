@@ -80,4 +80,13 @@ with carburante as (
     select * 
       from carburante
      where rank = 1
-  order by targa,rank
+  order by targa,rank;
+  
+select targa,
+       data,
+       litri,
+       ratio_to_report(litri) over()                   perc_litri_su_totale, 
+       ratio_to_report(litri) over(partition by targa) perc_litri_su_targa,  
+       km_progr
+  from d11_carburante;
+
