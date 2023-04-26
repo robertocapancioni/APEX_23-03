@@ -66,3 +66,18 @@ select targa,
                                order by data ) dense_rank
   from d11_carburante
   order by targa,rank
+
+with carburante as (
+     select targa,
+            data,
+            litri,
+            km_progr,
+            rank() over(partition by targa 
+                            order by data,km_progr,id ) rank,
+            dense_rank() over(partition by targa 
+                                  order by data,km_progr,id ) dense_rank
+       from d11_carburante)
+    select * 
+      from carburante
+     where rank = 1
+  order by targa,rank
