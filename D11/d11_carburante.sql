@@ -46,3 +46,23 @@ with carburante as(
           end km_medi_litro
      from carburante
  order by targa,data
+
+select targa,
+       data,
+       litri,
+       km_progr,
+       rank() over(partition by targa 
+                               order by data ) rank
+  from d11_carburante
+  order by targa,rank;
+ 
+ select targa,
+       data,
+       litri,
+       km_progr,
+       rank() over(partition by targa 
+                               order by data ) rank,
+       dense_rank() over(partition by targa 
+                               order by data ) dense_rank
+  from d11_carburante
+  order by targa,rank
