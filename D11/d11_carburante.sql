@@ -90,3 +90,46 @@ select targa,
        km_progr
   from d11_carburante;
 
+select count(*) righe_totali
+  from d11_carburante
+
+  select targa,count(*)righe_totali
+    from d11_carburante
+group by targa
+
+select targa,
+       count(*) over() righe_totali
+    from d11_carburante
+
+select targa,
+       count(*) over(partition by targa) righe_totali
+    from d11_carburante
+
+select sum(litri) litri_totali
+  from d11_carburante
+
+  select targa,sum(litri)litri_totali
+    from d11_carburante
+group by targa
+
+select targa,
+       sum(litri) over() litri_totali
+    from d11_carburante
+
+select targa,
+       sum(litri) over(partition by targa) litri_totali
+    from d11_carburante
+
+select targa,
+       data,
+       litri,
+       sum(litri) over(partition by targa) litri_totali,
+       sum(litri) over(partition by targa order by data) litri_totali_progr,
+       sum(litri) over(partition by targa order by data,id rows 
+                                           between unbounded preceding 
+                                               and current row) litri_totali_progr2,
+       sum(litri) over(partition by targa order by data range 
+                                           between unbounded preceding 
+                                               and current row) litri_totali_progr3
+    from d11_carburante
+order by targa,data,id
