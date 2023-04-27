@@ -1,3 +1,5 @@
+delete from d11_kickstarter where to_char(launched,'YYYY') is  null
+
 -- CARD LEFT
 select 
 'fa fa-building-o'ICON_CLASS,
