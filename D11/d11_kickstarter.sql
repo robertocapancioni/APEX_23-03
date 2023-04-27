@@ -118,3 +118,15 @@ sum(a.goal)goal,sum(a.num)all_num,sum(s.num)succ_num,round(100*sum(s.num)/sum(a.
                     and s.state='Canceled'
 group by a.country--,a.category
 order by a.country--,a.category
+
+
+
+--
+--# Projects by Country and Category (Click on the legend to deselect values)
+select 
+category,country--,state
+, count(*) value
+from d11_kickstarter
+where (country in (select * from apex_string.split(:P1_COUNTRY,':')) or :P1_COUNTRY is null) 
+group by category,country--,state
+order by country,category--,state
