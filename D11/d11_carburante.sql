@@ -125,11 +125,11 @@ select targa,
        litri,
        sum(litri) over(partition by targa) litri_totali,
        sum(litri) over(partition by targa order by data) litri_totali_progr,
-       sum(litri) over(partition by targa order by data,id rows 
-                                           between unbounded preceding 
+       sum(litri) over(partition by targa order by data,id
+                                      rows between unbounded preceding 
                                                and current row) litri_totali_progr2,
-       sum(litri) over(partition by targa order by data range 
-                                           between unbounded preceding 
+       sum(litri) over(partition by targa order by data 
+                                     range between unbounded preceding 
                                                and current row) litri_totali_progr3
     from d11_carburante
 order by targa,data,id
