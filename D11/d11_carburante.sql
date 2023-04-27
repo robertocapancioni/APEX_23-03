@@ -10,7 +10,7 @@ select targa,
          litri,
          km_progr,
          lead(km_progr) over(partition by targa 
-                                 order by data  ) km_progr_successivi
+                                 order by data,km_progr  ) km_progr_successivi
     from d11_carburante
 order by targa,data;
 
