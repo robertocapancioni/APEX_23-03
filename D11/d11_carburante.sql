@@ -90,6 +90,14 @@ select targa,
        km_progr
   from d11_carburante;
 
+select targa,
+       data,
+       litri,
+       round(100*ratio_to_report(litri) over(),2)                   perc_litri_su_totale, 
+       round(100*ratio_to_report(litri) over(partition by targa),2) perc_litri_su_targa,  
+       km_progr
+  from d11_carburante;
+  
 select count(*) righe_totali
   from d11_carburante
 
