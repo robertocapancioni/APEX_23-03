@@ -74,6 +74,4 @@ fattura_dettaglio
   importo num /nn#drop:true
 
 # settings = { prefix: "D12", onDelete: "RESTRICT", semantics: "CHAR", drop: true, language: "EN", APEX: true }
-
-# settings = { prefix: "D12", onDelete: "RESTRICT", semantics: "CHAR", drop: true, language: "EN", APEX: true }
 */
