@@ -1,0 +1,26 @@
+:root {
+
+/* Colors: */
+--unnamed-color-ff0000: #FF0000;
+
+/* Font/text values */
+--unnamed-font-family-dm-sans: DM Sans;
+--unnamed-font-style-normal: normal;
+--unnamed-font-weight-normal: normal;
+--unnamed-font-weight-bold: bold;
+--unnamed-font-size-30: 30px;
+--unnamed-character-spacing-0: 0px;
+--unnamed-line-spacing-39: 39px;
+--unnamed-text-transform-uppercase: uppercase;
+}
+
+.unnamed-character-style-2 {
+font-family: var(--unnamed-font-family-dm-sans);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-30);
+line-height: var(--unnamed-line-spacing-39);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-ff0000);
+text-transform: var(--unnamed-text-transform-uppercase);
+}
