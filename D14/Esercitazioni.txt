@@ -1,0 +1,71 @@
+------------------------------- PROCESSI -------------------------------
+aumentaStipendio
+begin
+    update emp
+       set sal = sal * 1.25
+     where empno = APEX_APPLICATION.g_X01;
+end;
+
+function aumentaStipendio(dipId, dipName){
+	var ret = confirm("Vuoi aumentare lo stipendio di "+dipName+" del 25%?");
+	if ( !ret )
+		return;
+	apex.server.process(
+		'aumentaStipendio',                             // Process or AJAX Callback name
+		{x01: dipId},  // Parameter "x01"
+		{
+		dataType: "text",
+		success: function (pData) {             // Success Javascript
+			apex.region("empRgn").refresh();
+		},
+		error: function(pData){ 
+			alert("Salario non aumentato!");
+		}                   
+		}
+	);        
+}
+
+
+Colonna virtule, espressione HTML
+<a href="javascript:" onClick="aumentaStipendio('#EMPNO#','#ENAME#')"><span style="background-color:yellow; color:red;">+</span></a>
+
+Processi di applicazione
+
+iLikeIt
+declare 
+  nLike number;
+begin
+  insert into D14_APP_LIKE (ID_APP, d_like) values (apex_application.g_x01, sysdate);
+
+    select count(*)
+     into nLike
+     from d14_app_like 
+     where id_app = apex_application.g_x01;
+
+ htp.p(nLike);  
+end;
+
+ 
+function ilikeit(appId){
+    apex.server.process(
+    'iLikeIt',                             // Process or AJAX Callback name
+     {x01: appId},                                // Parameter "x01"
+    {
+      dataType: "text",
+      success: function (pData) {             // Success Javascript
+            $("#BTN_LIKE .t-Button-label")[0].innerHTML=pData;
+      }                  
+    }
+  );
+}
+
+Sulla pagina 0 in Before Navigation
+campo nascosto P0_N_LIKE con valore predefinito 
+	select count(*) from D14_APP_LIKE where ID_APP = :APP_ID
+button con azione dinamica ilikeit(&APP_ID.);
+
+
+
+
+
+
