@@ -106,7 +106,8 @@ select json_object(
 
 
 create or replace view d12_fattura_json_vw as
-select json_object(
+select t.id,
+       json_object(
                    t.id,
                    t.cliente_id,
                    c.ragione_sociale,
@@ -114,7 +115,7 @@ select json_object(
                    t.numero,
                    t.descrizione,
                    t.data,
-                   'righe  '           is (
+                   'righe'           is (
                                             select  
                                             json_arrayagg(json_object(d.id,
                                                                       d.fattura_testata_id,
@@ -131,7 +132,28 @@ select json_object(
   from d12_fattura_testata t
   join d12_cliente c on t.cliente_id = c.id;
 
+select * from d12_fattura_json_vw;
 
+select * from json_table(
+                    (
+                    select fattura 
+                      from d12_fattura_json_vw
+                     where id =1
+                    ),
+                    '$[*]'
+                        columns(
+                            ragione_sociale VARCHAR2(400) PATH '$.ragione_sociale',
+                            anno varchar2(10) PATH '$.anno',
+                            numero varchar2(10) PATH '$.numero',
+                            nested PATH '$.righe[*]'
+                            columns(
+                                 riga varchar2(10) PATH '$.riga',
+                                 descrizione varchar2(100) PATH '$.descrizione',
+                                 quantita number PATH '$.quantita',
+                                 importo number PATH '$.importo'
+                            )
+                        )
+                 );
 
 
 
