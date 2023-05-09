@@ -102,7 +102,35 @@ select json_object(
                                             where d.fattura_testata_id = t.id)
                                          ) fattura
   from d12_fattura_testata t
-  join d12_cliente c on t.cliente_id = c.id
+  join d12_cliente c on t.cliente_id = c.id;
+
+
+create or replace view d12_fattura_json_vw as
+select json_object(
+                   t.id,
+                   t.cliente_id,
+                   c.ragione_sociale,
+                   t.anno,
+                   t.numero,
+                   t.descrizione,
+                   t.data,
+                   'righe  '           is (
+                                            select  
+                                            json_arrayagg(json_object(d.id,
+                                                                      d.fattura_testata_id,
+                                                                      d.riga,
+                                                                      d.descrizione, 
+                                                                      d.quantita,
+                                                                      d.importo 
+                                                                      ) 
+                                                        order by riga
+                                                        returning clob) riga
+                                            from d12_fattura_dettaglio d
+                                            where d.fattura_testata_id = t.id)
+                                         ) fattura
+  from d12_fattura_testata t
+  join d12_cliente c on t.cliente_id = c.id;
+
 
 
 
