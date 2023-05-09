@@ -150,7 +150,7 @@ select json_object(
                    t.numero,
                    t.descrizione,
                    t.data,
-                   'righe  '           is (
+                   'righe'           is (
                                             select  
                                             json_arrayagg(json_object(d.id,
                                                                       d.fattura_testata_id,
