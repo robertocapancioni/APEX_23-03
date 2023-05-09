@@ -218,6 +218,27 @@ select * from json_table(
                         )
                  );
 
+
+
+select * from json_table(
+                    (
+                    select json_arrayagg(fattura returning clob)f 
+                      from d12_fattura_json_vw
+                    ),
+                    '$[*]'
+                        columns(
+                            ragione_sociale VARCHAR2(40) PATH '$.ragione_sociale',
+                            anno varchar2(10) PATH '$.anno',
+                            numero varchar2(10) PATH '$.numero',
+                            nested PATH '$.righe[*]'
+                            columns(
+                                 riga varchar2(10) PATH '$.riga',
+                                 descrizione varchar2(100) PATH '$.descrizione',
+                                 quantita number PATH '$.quantita',
+                                 importo number PATH '$.importo'
+                            )
+                        )
+                 );
 https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/json-path-expressions.html
 
 
