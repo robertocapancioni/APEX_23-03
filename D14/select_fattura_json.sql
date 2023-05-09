@@ -155,7 +155,7 @@ select * from json_table(
                         )
                  );
 
-
+https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/json-path-expressions.html
 
 
 
