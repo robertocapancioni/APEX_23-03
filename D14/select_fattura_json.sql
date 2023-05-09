@@ -25,3 +25,11 @@ select json_object(
                     ) testata
   from d12_fattura_testata t
   join d12_cliente c on t.cliente_id = c.id;
+
+select * 
+  from d12_fattura_dettaglio;
+
+select json_object(*) righe_dettaglio 
+  from d12_fattura_dettaglio;
+
+
