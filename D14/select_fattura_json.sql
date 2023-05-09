@@ -5,12 +5,52 @@ select json_object(*) testata
   from d12_fattura_testata;
 
 select json_object(
+                   key 'ID'          value id,
+                   key 'CLIENTE_ID'  value cliente_id,
+                   key 'ANNO'        value anno,
+                   key 'NUMERO'      value numero,
+                   key 'DESCRIZIONE' value descrizione,
+                   key 'DATA'        value data
+                    ) testata
+  from d12_fattura_testata;
+
+select json_object(
+                   'ID'          value id,
+                   'CLIENTE_ID'  value cliente_id,
+                   'ANNO'        value anno,
+                   'NUMERO'      value numero,
+                   'DESCRIZIONE' value descrizione,
+                   'DATA'        value data
+                    ) testata
+  from d12_fattura_testata;
+
+select json_object(
                    key 'ID'          is id,
                    key 'CLIENTE_ID'  is cliente_id,
                    key 'ANNO'        is anno,
                    key 'NUMERO'      is numero,
                    key 'DESCRIZIONE' is descrizione,
                    key 'DATA'        is data
+                    ) testata
+  from d12_fattura_testata;
+
+select json_object(
+                   'ID'         is  id,
+                   'CLIENTE_ID' is  cliente_id,
+                   'ANNO'       is  anno,
+                   'NUMERO'     is  numero,
+                   'DESCRIZIONE'is  descrizione,
+                   'DATA'       is  data
+                    ) testata
+  from d12_fattura_testata;
+
+  select json_object(
+                     id,
+                     cliente_id,
+                     anno,
+                     numero,
+                     descrizione,
+                     data
                     ) testata
   from d12_fattura_testata;
   
