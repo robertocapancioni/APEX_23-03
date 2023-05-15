@@ -4,7 +4,7 @@ eventi
     organizzatore vc100
     nome vc100
     data date
-	inizio vc5
+    inizio vc5
     durata num
     luogo vc500
     lat num
