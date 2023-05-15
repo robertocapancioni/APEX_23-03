@@ -1,0 +1,44 @@
+Uso Email Template
+
+eventi  
+    organizzatore vc100
+    nome vc100
+    data date
+	inizio vc5
+    durata num
+    luogo vc500
+    lat num
+    lon num
+    note vc500
+    url_img vc200
+
+#prefix:D16
+
+
+
+declare
+  vEvento D16_EVENTI%ROWTYPE;
+begin
+  select * 
+    into vEvento
+    from D16_EVENTI
+   where id = :P4_ID_EVENTO;
+   
+    apex_mail.send (
+		p_from              => 'dbmail@temasistemi.it',
+        p_to                 => :P4_EMAIL,
+        p_template_static_id => 'EVENTI',
+        p_placeholders       => '{' ||
+        '    "EVENT_NAME":' || apex_json.stringify( vEvento.nome ) ||
+        '   ,"INVITEE":'    || apex_json.stringify( :P4_NOME ) ||
+        '   ,"ORGANIZER":'  || apex_json.stringify( vEvento.organizzatore ) ||
+        '   ,"EVENT_DATE":' || apex_json.stringify( vEvento.data ) ||
+        '   ,"START_TIME":' || apex_json.stringify( vEvento.inizio ) ||
+        '   ,"DURATION":'   || apex_json.stringify( vEvento.durata ) ||
+        '   ,"LOCATION":'   || apex_json.stringify( vEvento.luogo ) ||
+        '   ,"NOTES":'      || apex_json.stringify( vEvento.note ) ||
+        '   ,"URL_IMG":'    || apex_json.stringify( vEvento.url_img ) ||
+        '}' );
+	apex_mail.push_queue;
+end;
+
