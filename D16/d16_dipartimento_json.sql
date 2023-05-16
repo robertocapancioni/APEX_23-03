@@ -31,3 +31,17 @@ insert into d16_dipartimento_json  (dipartimento)
                                   ]
                  }'
             );
+
+-- semplice query
+select dipartimento 
+ from d16_dipartimento_json;
+
+-- query con dot notation ERRATA (mancano gli alias)
+select dipartimento.dipartimenti 
+ from d16_dipartimento_json;
+ 
+-- query con dot notation CORRETTA (ci sono gli alias)
+select d.dipartimento.dipartimenti 
+ from d16_dipartimento_json d;
+ 
+ 
