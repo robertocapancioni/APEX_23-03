@@ -85,6 +85,17 @@ where  id = 2;
 
 select * from d16_persona
 
+/*
+funzioni json_transform:
+REMOVE  
+KEEP    
+RENAME  
+SET     
+REPLACE 
+INSERT  
+APPEND  
+https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/oracle-sql-function-json_transform.html
+*/
 
 update d16_persona  
 set    persona = json_transform (
