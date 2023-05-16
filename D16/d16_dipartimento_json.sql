@@ -12,3 +12,22 @@ dipartimento_json
 # settings = { prefix: "D16", semantics: "CHAR", language: "EN", APEX: true }
 */
 
+-- insert di json valido
+insert into d16_dipartimento_json  (dipartimento) 
+     values (
+                '{"dipartimenti": [{ "name": "dipartimento1","label": "My dipartimento 1","value": "ABCD"},
+                                   { "name": "dipartimento2","label": "My dipartimento 2","value": "XYZ"},
+                                   { "name": "dipartimento3","label": "My dipartimento 3","value": "Y"}
+                                  ]
+                 }'
+            );
+            
+-- insert di json NON valido
+insert into d16_dipartimento_json  (dipartimento) 
+     values (
+                '{"dipartimenti": [{       : "dipartimento1","label": "My dipartimento 1","value": "ABCD"},
+                                   { "name": "dipartimento2","label": "My dipartimento 2","value": "XYZ"},
+                                   { "name": "dipartimento3","label": "My dipartimento 3","value": "Y"}
+                                  ]
+                 }'
+            );
