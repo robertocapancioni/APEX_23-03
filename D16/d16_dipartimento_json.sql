@@ -40,6 +40,11 @@ select dipartimento
 select dipartimento.dipartimenti 
  from d16_dipartimento_json;
  
+ select d.dipartimento.dipartimenti.name  as name,
+       d.dipartimento.dipartimenti.label as label
+  from d16_dipartimento_json d;
+
+ 
 -- query con dot notation CORRETTA (ci sono gli alias)
 select d.dipartimento.dipartimenti 
  from d16_dipartimento_json d;
