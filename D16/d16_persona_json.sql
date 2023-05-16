@@ -1,5 +1,5 @@
 
-drop table d16_persona
+drop table d16_persona;
 
 create table d16_persona (
     id   integer not null primary key,
@@ -9,24 +9,24 @@ create table d16_persona (
 
 insert into d16_persona 
   values ( 1, '{"id":1,
-                                         "nome":"John",
-                                         "cognome":"Doe",
-                                         "indirizzo": {"via":"Main St",
-                                                     "citta":"Redwood",
-                                                     "cap":"94607",
-                                                     "stato":"CA",
+                                         "nome":"Giovanni",
+                                         "cognome":"Rossi",
+                                         "indirizzo": {"via":"Viale della Vittoria",
+                                                     "citta":"Roma",
+                                                     "cap":"00100",
+                                                     "provincia":"MI",
                                                      "telefono":null
                                                     
                                                     }
                                         }' );
 insert into d16_persona 
   values ( 2, '{"id":2,
-                                         "nome":"Mary",
-                                         "cognome":"Doe",
-                                         "indirizzo": {"via":"Main St",
-                                                     "citta":"San Francisco",
-                                                     "cap":"94607",
-                                                     "stato":"CA",
+                                         "nome":"Maria",
+                                         "cognome":"Verdi",
+                                         "indirizzo": {"via":"Viale dei Giardini",
+                                                     "citta":"Milano",
+                                                     "cap":"20100",
+                                                     "provincia":"MI",
                                                      "telefono":null
                                                     
                                                     }
@@ -39,13 +39,13 @@ update d16_persona
 set    persona = 
 '{
  "id":1,
- "nome":"John",
- "cognome":"Doe",
- "indirizzo": {"via":"Main St",
-			 "citta":"Redwood",
-			 "cap":"94607",
-			 "stato":"CA",
-			 "telefono":"+99 333 333"
+ "nome":"Giovanni",
+ "cognome":"Rossi",
+ "indirizzo": {"via":"Viale della Vittoria",
+			 "citta":"Roma",
+			 "cap":"00100",
+			 "provincia":"RM",
+			 "telefono":"06 333 333"
 			
 			}
 }'
@@ -57,8 +57,8 @@ select * from d16_persona
 update d16_persona
 set    persona = json_mergepatch ( 
          persona,
-         '{"cognome":"Dawson",
-           "indirizzo" : {"telefono":"+99 444 444"}
+         '{"cognome":"Bianchi",
+           "indirizzo" : {"telefono":"06 444 444"}
           }'
        )
 where  id = 2;
@@ -79,7 +79,7 @@ select * from d16_persona
 update d16_persona  
 set    persona = json_transform (
   persona, 
-  replace '$.indirizzo.telefono' = '+99 999 999'
+  replace '$.indirizzo.telefono' = '06 999 999'
 )
 where  id = 2;
 
@@ -89,7 +89,7 @@ select * from d16_persona
 update d16_persona  
 set    persona = json_transform (
   persona, 
-  set '$.indirizzo.nazione' = 'US'
+  set '$.indirizzo.nazione' = 'IT'
 )
 where  id = 2;
 
@@ -106,7 +106,7 @@ select p.persona.titolo,
        p.persona.indirizzo.via via,
        p.persona.indirizzo.citta citta,
        p.persona.indirizzo.cap cap,
-       p.persona.indirizzo.stato stato,
+       p.persona.indirizzo.provincia provincia,
        p.persona.indirizzo.telefono telefono,
        p.persona.indirizzo.nazione nazione
 from d16_persona p;
