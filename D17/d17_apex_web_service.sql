@@ -41,3 +41,29 @@ https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx
 
 -- documentazione filtri
 https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-091748F8-3D14-402B-9310-25E6A9116B47
+
+
+
+
+
+
+
+select 
+apex_web_service.make_rest_request(
+    p_url => 'https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d17/vendita/',
+    p_http_method => 'GET'
+   ) vendita
+from dual;
+
+
+
+
+select 
+apex_web_service.make_rest_request(
+    p_url => 'https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d17/vendita_csv/',
+    p_http_method => 'GET'
+   ) vendita
+from dual;
+
+
+
