@@ -56,6 +56,28 @@ apex_web_service.make_rest_request(
 from dual;
 
 
+select col001, col002, col003, col004, col005, col006, col007
+from table(apex_data_parser.parse
+(  p_content => apex_web_service.make_rest_request_b
+    ('https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d17/vendita_csv/', 'GET')
+  , p_file_name => 'big-mac-source-data.csv'
+  , p_skip_rows => 1
+));
+
+
+select to_number(col001) id, 
+       to_date(substr(col002,1,10),'yyyy-mm-dd')data, 
+       col003 prodotto, 
+       col004 cliente, 
+       col005 zona_cliente, 
+       to_number(replace(col006,'.',','))quantita, 
+       to_number(replace(col007,'.',',')) importo
+from table(apex_data_parser.parse
+(  p_content => apex_web_service.make_rest_request_b
+    ('https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d17/vendita_csv/', 'GET')
+  , p_file_name => 'big-mac-source-data.csv'
+  , p_skip_rows => 1
+));
 
 
 select 
