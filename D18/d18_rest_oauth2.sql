@@ -95,10 +95,10 @@ select name, client_id,client_secret from user_ords_clients where name = 'client
 --client_secret = dYYr2wE3xad4xOsJh4F9Kg..
 
 -- url per token
-https://cnde8nae4maapcd-oramms.adb.eu-zurich-1.oraclecloudapps.com/ords/at0/oauth/token
+https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/oauth/token
 
 -- url per modello
-https://cnde8nae4maapcd-oramms.adb.eu-zurich-1.oraclecloudapps.com/ords/at0/d18/vendita/
+https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d18/vendita/
 
 
 -- link documentazione
@@ -109,7 +109,7 @@ declare
 l_response clob :='';
 BEGIN
 apex_web_service.oauth_authenticate(
-        p_token_url => 'https://cnde8nae4maapcd-oramms.adb.eu-zurich-1.oraclecloudapps.com/ords/at0/oauth/token',
+        p_token_url => 'https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/oauth/token',
         p_client_id     => '3qsw4hofosN8zif-NSeDuQ..',
         p_client_secret => 'dYYr2wE3xad4xOsJh4F9Kg..');
 
