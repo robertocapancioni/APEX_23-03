@@ -76,6 +76,16 @@ insert into d18_automezzo (
     'BMW'
 );
 
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A001',1,date'2020-05-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A002',1,date'2021-05-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A003',1,date'2022-05-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A004',2,date'2020-09-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A005',2,date'2021-09-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A006',2,date'2022-09-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A007',3,date'2021-06-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A008',3,date'2022-06-01');
+insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A009',3,date'2023-06-01');
+
 commit;
 
 alter table d18_automezzo
