@@ -1,0 +1,62 @@
+importare i contatti
+
+
+agenda
+  data date
+  cliente num
+
+#prefix:D18
+
+
+-- Disabilita l'ordine e il ridimensionamento delle colonne
+
+function(options) {
+    options.defaultGridOptions = {
+        resizeColumns: false,
+        columnSort: false    
+    };
+    return options;
+}
+
+-- Definire la larghezza delle colonne
+function(options) {
+    options.columns.NOME.width   = '15%';
+    options.columns.COGNOME.width    = '15%';
+    options.columns.EMAIL.width   = '20%';
+    options.columns.RECAPITO.width   = '10%';
+    options.columns.LUOGO.width = '40%';
+    return options;
+}
+
+-- Nascondi o mostra le colonne
+function(options) {
+    options.columns.EMAIL.hidden = true;
+    options.columns.RECAPITO.hidden = true;
+    options.columns.LUOGO.hidden = true;
+
+    options.columns.NOME.hidden = false;
+    options.columns.NOME.heading = 'Nome Proprio';
+    options.columns.COGNOME.hidden = false;
+    options.columns.COGNOME.heading = 'Cognome Proprio';
+    return options;
+}
+
+-- Modella le tue celle
+function(options) {
+    options.columns.RECAPITO.columnCssClasses = "u-color-4";
+    return options;
+}
+
+-- controllo dell'impaginazione
+function(options) {
+    options.defaultGridOptions = {
+        pagination : {
+            scroll : true,
+            loadMore : false
+        }   
+    };
+    return options;
+}
+
+
+https://docs.oracle.com/en/database/oracle/apex/22.2/aexjs/index.html
