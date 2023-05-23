@@ -1,0 +1,85 @@
+-- STEP 1 abilitazione schema e definizione modulo
+begin
+    ords.enable_schema;
+
+    ords.delete_module(
+        p_module_name => 'emp.rest' );
+    ords.define_module(
+        p_module_name => 'emp.rest',
+        p_base_path => '/emp/' );
+End;
+
+---- STEP 2 Creazione modelli per GET
+begin
+	ords.define_template(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/' );
+	ords.define_template(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/:empno' );
+end;
+
+-- STEP 3 Definizione dell'handler GET
+begin
+	ords.define_handler(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/',
+		p_method      => 'GET',
+		p_source_type => ords.source_type_collection_feed,
+		p_source      => 'select * from emp' );
+	ords.define_handler(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/:empno',
+		p_method      => 'GET',
+		p_source_type => ords.source_type_collection_item,
+		p_source      => 'select * from emp where empno = :empno' );
+end;	
+
+
+-- STEP 4 Definizione degli handler per POST, PUT, DELETE
+begin
+	ords.define_handler(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/',
+		p_method      => 'POST',
+		p_source_type => ords.source_type_plsql,
+		p_source      => 'begin insert into emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+			values (:empno,:ename,:job,:mgr,:hiredate,:sal,:comm,:deptno);:forward_location:=:empno;:status_code:=201;end;' );
+	ords.define_handler(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/:empno',
+		p_method      => 'PUT',
+		p_source_type => ords.source_type_plsql,
+		p_source      => 'begin update emp set ename=:ename, job=:job, mgr=:mgr, hiredate=:hiredate, sal=:sal, comm=:comm, deptno=:deptno
+			where empno=:empno; :forward_location:=:empno;:status_code:=200;end;' );
+	ords.define_handler(
+		p_module_name => 'emp.rest',
+		p_pattern     => 'hol/:empno',
+		p_method      => 'DELETE',
+		p_source_type => ords.source_type_plsql,
+		p_source      => 'begin delete emp where empno=:empno;:status_code:=200;htp.p(''{"status":"success"}'');end;' );
+end;		
+
+
+Tabella DEPT
+
+begin
+ords.delete_module(
+    p_module_name => 'dept.rest' );
+
+ords.define_module(
+    p_module_name => 'dept.rest',
+    p_base_path => '/dept/' );
+
+ords.define_template(
+    p_module_name => 'dept.rest',
+    p_pattern     => 'hol/' );
+	
+ords.define_handler(
+    p_module_name => 'dept.rest',
+    p_pattern     => 'hol/',
+    p_method      => 'GET',
+    p_source_type => ords.source_type_collection_feed,
+    p_source      => 'select * from dept' );
+
+end;	
