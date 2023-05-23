@@ -113,7 +113,7 @@ apex_web_service.oauth_authenticate(
         p_client_id     => '3qsw4hofosN8zif-NSeDuQ..',
         p_client_secret => 'dYYr2wE3xad4xOsJh4F9Kg..');
 
-        l_response := APEX_WEB_SERVICE.MAKE_REST_REQUEST(p_url => 'https://cnde8nae4maapcd-oramms.adb.eu-zurich-1.oraclecloudapps.com/ords/at0/d18/vendita/',
+        l_response := APEX_WEB_SERVICE.MAKE_REST_REQUEST(p_url => 'https://g0a16906b023bfa-odcecmi.adb.eu-frankfurt-1.oraclecloudapps.com/ords/usrx00/d18/vendita/',
                                                          p_http_method => 'GET',
                                                          p_scheme => 'OAUTH_CLIENT_CRED');    
        htp.prn(l_response);
