@@ -90,4 +90,11 @@ merge into d18_vendita d
           values (s.data,s.prodotto,s.cliente,s.zona_cliente,s.quantita,s.importo)
            where s.importo < 100;
 
+create unique index d18_vendita_uq1
+    on d18_vendita (data,prodotto,cliente);
+
+begin
+   DBMS_STATS.GATHER_TABLE_STATS(null, 'D17_VENDITA');
+   DBMS_STATS.GATHER_TABLE_STATS(null, 'D18_VENDITA');
+end;
 
