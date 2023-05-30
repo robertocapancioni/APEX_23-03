@@ -86,6 +86,11 @@ insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values 
 insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A008',3,date'2022-06-01');
 insert into d18_assicurazione (assicurazione,automezzo_id,data_scadenza) values ('A009',3,date'2023-06-01');
 
+insert into d18_proprietario (automezzo_id, proprietario,data_inizio,data_fine) values (1, 'NICOLETTA', date'2020-06-01', date'2022-03-31');
+insert into d18_proprietario (automezzo_id, proprietario,data_inizio,data_fine) values (1, 'ROBERTO', date'2022-04-01', null);
+insert into d18_proprietario (automezzo_id, proprietario,data_inizio,data_fine) values (2, 'ROBERTO', date'2021-06-01', date'2022-03-31');
+insert into d18_proprietario (automezzo_id, proprietario,data_inizio,data_fine) values (2, 'NICOLETTA', date'2022-04-01', null);
+
 commit;
 
 alter table d18_automezzo
